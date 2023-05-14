@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onClick="likeme()" >Like Me</button>
+    <h1 id="head1" >I am heading 1</h1>
+    <h2 id="head2" >I am h2 tag</h2>
+    <h3 id="head3"> <i>I am h3 tag</i></h3>
+
+    <!-- Change My text -->
+    <h1 id="headig1" >I am heading 1</h1>
+    <button onClick="changeMyText()" >Change my text</button>
+
+    <!-- Get name from user -->
+    <input value="" id="name" type="text"/>
+    <button onClik="handleSubmit()" >submit</button>
+
+    <input id="name" type="text" value="" />
+    <button onClick="catchValue()">Submit</button>
+</body>
+</html>
+<script>
+const likeme = () =>{
+   alert("Some one Liked Me")
+}
+let x = document.getElementById("head1")
+console.log(x)
+
+let y= document.getElementById("head2").innerText;
+console.log(y)
+
+let z = document.getElementById("head3").innerHTML
+console.log(z)
+
+    const changeMyText =()=>{
+    document.getElementById("headig1").innerText = "You have changed my text"
+    }
+const handleSubmit = () =>{
+  let name =  document.getElementById("name").value
+  console.log(name)
+}
+
+    function catchValue() {
+        var studentName = document.getElementById("name").value;
+        console.log(studentName);
+    }
+
+
+</script>
