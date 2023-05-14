@@ -28,6 +28,8 @@ const  betterExpensiveFunction = throttleFunction(expensiveFunction, 1000);
 
 window.addEventListener("resize", betterExpensiveFunction);
 
+// ! Here flag is clouser but why ? Becuse we dont want flag to be initialized again and again
+
 // const expensiveFunction = () => {
 //   // This function is expensive
 //   console.log("This is expensive function");
