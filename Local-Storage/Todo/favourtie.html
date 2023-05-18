@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favourite</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>Favourite</h1>
+    <table>
+        <!-- Dont change order of columns --->
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Priority</th>
+              <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Append your output to tbody -->
+        </tbody>
+    </table>
+</body>
+</html>
+<script>
+    let fav = JSON.parse(localStorage.getItem("fav"))
+    console.log(fav)
+    displayTable(fav)
+    
+    function displayTable(fav) {
+        document.querySelector("tbody").innerHTML = ""
+        fav.forEach((el) => {
+            console.log(el)
+            let row = document.createElement("tr")
+            let td1 = document.createElement("td")
+            td1.innerText = el.taskName
+            let td2 = document.createElement("td")
+            td2.innerText = el.taskpriority
+
+            if (el.taskpriority === "High") {
+                td2.style.backgroundColor = "red"
+            }
+            else {
+                td2.style.backgroundColor = "green"
+            }
+            let td3 = document.createElement("td")
+            td3.innerText = "delete"
+            td3.addEventListener("click", ()=>{
+
+            })
+            row.append(td1, td2)
+            document.querySelector("tbody").append(row)
+        })
+    }
+
+
+
+</script>
