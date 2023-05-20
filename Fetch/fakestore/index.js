@@ -1,4 +1,5 @@
 let bag = []
+let Addcart = JSON.parse(localStorage.getItem ("cart")) || []
 fetch("https://fakestoreapi.com/products")
   .then((res) => res.json())
   .then((data) => {displayTable(data)
@@ -27,7 +28,15 @@ document.getElementById("container").innerHTML = ""
     let rating = document.createElement("p");
     rating.innerText = el.rating.rate
 
-    div.append(image, title, price, rating)
+    let cart =  document.createElement("button")
+    cart.innerText = "Add to cart"
+
+    cart.addEventListener("click", ()=>{
+      Addcart.push(el)
+      localStorage.setItem("cart", JSON.stringify(Addcart))
+    })
+
+    div.append(image, title, price, rating, cart)
     document.getElementById("container").append(div)
   });
 };
@@ -40,4 +49,23 @@ document.querySelector("input").addEventListener("input", ()=>{
  })
  displayTable(newData)
  console.log(newData)
+})
+
+// ! Select tag - sort
+
+document.getElementById("select").addEventListener("change", ()=>{
+  let selectTag = document.getElementById("select").value
+  selectTag == "low"  ?  bag.sort((a, b)=> a.price-b.price) : bag.sort((a, b)=> b.price-a.price)
+  displayTable(bag)
+ 
+  console.log(selectTag)
+})
+
+
+// ! Filter Select Tag - The Api is diffrent here But logic is this
+
+document.getElementById("filterSelect").addEventListener("change", ()=>{
+  let FilterSelect =  document.getElementById("filterSelect").value
+ let filterData =  bag.filter((el)=>el.region == FilterSelect)
+  displayTable(filterData)
 })
